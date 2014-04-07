@@ -31,12 +31,20 @@
 
 package com.toy.anagrams.lib;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Implementation of the logic for the Anagram Game application.
  */
 final class StaticWordLibrary extends WordLibrary {
 
     private static final String[] WORD_LIST = {
+        "abstraction",
+        "つだうめこ",
+        /*
         "abstraction",
         "ambiguous",
         "arithmetic",
@@ -81,9 +89,12 @@ final class StaticWordLibrary extends WordLibrary {
         "hotjava",
         "vertex",
         "unsigned",
-        "traditional"};
+        "traditional"
+        */
+    };
 
     private static final String[] SCRAMBLED_WORD_LIST = {
+        /*
         "batsartcoin",
         "maibuguos",
         "ratimhteci",
@@ -129,6 +140,7 @@ final class StaticWordLibrary extends WordLibrary {
         "evtrxe",
         "nuisngde",
         "rtdatioialn"
+        */
     };
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
@@ -154,7 +166,24 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
-        return SCRAMBLED_WORD_LIST[idx];
+        String word = WORD_LIST[idx];
+        List<Character> charlist = toList(word);
+        Collections.shuffle(charlist);
+        return toStr(charlist);
+    }
+    private List<Character> toList(String s) {
+        List<Character> list = new ArrayList<Character>();
+        for (int i = 0; i < s.length(); i++) {
+            list.add(s.charAt(i));
+        }
+        return list;
+    }
+    private String toStr(List<Character> list) {
+        StringBuilder sb = new StringBuilder();
+        for (Character c : list) {
+            sb.append(c);
+        }
+        return new String(sb);
     }
 
     /**
