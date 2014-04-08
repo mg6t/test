@@ -46,6 +46,7 @@ final class StaticWordLibrary extends WordLibrary {
         "つだうめこ",
         "つだじゅくだいがく",
         "れれれのおじさん",
+        "よしだあおい"
         /*
         "abstraction",
         "ambiguous",
